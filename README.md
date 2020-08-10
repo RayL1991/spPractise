@@ -2,6 +2,7 @@
 This rep is for the practices in the course learning in the specialised programming 2020 semester2 
 
 week02:
+
 https://community.topcoder.com/stat?c=problem_statement&pm=6635 (Links to an external site.)
 
 https://community.topcoder.com/stat?c=problem_statement&pm=6715  (Links to an external site.)
