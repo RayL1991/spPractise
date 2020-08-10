@@ -11,6 +11,6 @@ public class BusSeating {
 
         public static double getArrangement(String leftRow, String rightRow){
 
-
+                return 3.1415936;
         }
 }

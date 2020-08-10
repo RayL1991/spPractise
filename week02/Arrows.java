@@ -1,7 +1,6 @@
 public class Arrows {
 
     public static int longestArrow(String s){
-        boolean is;
         int maxArrowLength= -1;
         int arrowLength = -1;
 
