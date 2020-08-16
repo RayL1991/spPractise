@@ -62,10 +62,12 @@ public class Arrows {
         String str1 = "<--->--==>";
         String str2 = "<<<<<<<<<<";
         String str3 = "----==-";
+        String str4 = "<----=====>";
 
         System.out.println(longestArrow(str1));
         System.out.println(longestArrow(str2));
         System.out.println(longestArrow(str3));
+        System.out.println(longestArrow(str4));
 
     }
 }
