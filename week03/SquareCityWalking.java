@@ -39,6 +39,7 @@ public class SquareCityWalking{
 		int largestGCD = 0;
 		int i = 0;
 		int j = 0;
+		return i;
 
 
 
