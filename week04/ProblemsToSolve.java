@@ -1,64 +1,68 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class ProblemsToSolve{
 
+	//  there is one soulution that, we cna find al soultion conbination
+	// ans then calculatiuon all things return the minmum ways number;
+	
+
 	public static int minNumber(int[] pleasantness, int variety){
+		int[] sortedPleas = new int[pleasantness.length];
+		for(int i=0; i<pleasantness.length; i++){
+			sortedPleas[i] = pleasantness[i];
+		}
+		Arrays.sort(sortedPleas);
 
-		int min_index = 0;
-		int max_index = 0;
+		// System.out.println(Arrays.toString(pleasantness));
 
-		int target_index = 0;
-		int stop_index = -1;
-
-		int minDistance = 0;
-		int maxDistance = 0;
-
-		int minValue = pleasantness[0];
-		int maxValue = pleasantness[0];
-
-		for(int i = 1; i< pleasantness.length; i++){
-
-			// keep recording the min value;
-			minValue = Math.min(minValue, pleasantness[i-1]);
-			maxValue = Math.max(maxValue, pleasantness[i-1]);
-
-			// record the least value that fit the distance;
-			if (minValue != minValue)
-				min_index = i -1;
-
-			if (maxValue != max_index)
-				max_index = i -1;
-
-			minDistance = Math.abs(pleasantness[i] - minValue);
-			maxDistance = Math.abs(pleasantness[i] - maxValue);
-
-			if ( minDistance >= variety){
-				target_index = min_index;
-				stop_index = i;
-				break;
+		ArrayList<Integer> results = new ArrayList<Integer>();
+		for (int i = 0; i< pleasantness.length; i++){
+			for(int j = i+1; j< pleasantness.length; j++){
+				if( (sortedPleas[j]-sortedPleas[i]) >= variety ){
+					// System.out.println(sortedPleas[j] + " " + sortedPleas[i] );
+					results.add(getSloveWays(pleasantness,sortedPleas[i],sortedPleas[j]));
+				}
 			}
-
-			if (maxDistance >= variety){
-				target_index = max_index;
-				stop_index = i;
-				break;
-			}
-
 		}
 
-		// calculat the the minNumber;
+		// System.out.println(Arrays.toString(results.toArray()));
 
-		if(stop_index != -1){
-			return getMaxIntRes(target_index) + getMaxIntRes(stop_index - target_index) + 1;
-		}else{
+		if(results.isEmpty()){
 			return pleasantness.length;
 		}
+		else{
+			return Collections.min(results);
+		}
 		
+	}
+
+
+	// 
+	public static int getSloveWays(int[] pleasantness, int mark_value_1, int mark_value_2){
+
+		ArrayList<Integer> results = new ArrayList<Integer>();
+
+		for(int i = 0; i< pleasantness.length; i++){
+			for(int j = i+1; j< pleasantness.length; j++){
+				if( (pleasantness[i] == mark_value_1) && (pleasantness[j] == mark_value_2) ){
+					results.add(getMaxIntRes(i) + getMaxIntRes(j - i) + 1);
+				}
+				if( (pleasantness[i] == mark_value_2) && (pleasantness[j] == mark_value_1) ){
+					results.add(getMaxIntRes(i) + getMaxIntRes(j - i) + 1);
+				}
+			}
+		}
+
+		return Collections.min(results);
 	}
 
 	public static int getMaxIntRes(int n){
 		if (n%2 != 0)	return n/2 + 1;
 		else 	return n/2;
 	}
+		
 
 	public static void main(String[] args) {
 		// int[] pleasantness = {6, 2, 6, 2, 6, 3, 3, 3, 7};
