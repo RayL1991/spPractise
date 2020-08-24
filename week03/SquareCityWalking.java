@@ -36,14 +36,12 @@ Find and return the largest possible similarity of cultures on a valid route fro
 
 public class SquareCityWalking{
 	public static int largestGCD(int N, int[] A){
-<<<<<<< HEAD
-=======
+ 
 		int largestGCD = 0;
 		int i = 0;
 		int j = 0;
 		return i;
 
->>>>>>> 8415dde344ec1fed52aa98295bbbc3cb5b8e470c
 
 		int[] route = new int[N*N];
 		route[0] = A[0];
