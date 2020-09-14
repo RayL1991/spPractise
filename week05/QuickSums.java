@@ -8,6 +8,7 @@ public class QuickSums{
 
 	public static int minSums(String numbers, int sum){
 
+		store.clear();
 		countSums(numbers,sum,0);
 
 		if (store.isEmpty()){
